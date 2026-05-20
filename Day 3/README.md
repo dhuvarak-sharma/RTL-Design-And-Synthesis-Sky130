@@ -1,10 +1,57 @@
 # Day 3 — Logic Optimization
 
-[← Back to Main README](./README.md)
+## Theory Topics Covered
+
+### Constant Propagation
+
+Constant propagation is an optimization technique where synthesis tools replace signals with constant values whenever possible. If a signal is always tied to logic 0 or logic 1, unnecessary hardware can be removed.
+
+This reduces:
+
+- Gate count
+- Area usage
+- Power consumption
 
 ---
 
-## Overview
+### State Optimization
+
+State optimization simplifies sequential logic by reducing unnecessary states and minimizing hardware complexity.
+
+Efficient state optimization improves:
+
+- Circuit speed
+- Area efficiency
+- Power efficiency
+
+---
+
+### Cloning (Introduction)
+
+Cloning refers to duplicating logic paths to reduce fanout and improve timing performance.
+
+Although discussed briefly, it is an important optimization strategy used in larger digital systems.
+
+---
+
+### Retiming (Introduction)
+
+Retiming is a sequential optimization technique where flip-flops are repositioned across combinational logic to improve timing performance without changing functionality.
+
+Retiming helps balance logic delays and improve maximum clock frequency.
+
+---
+
+### Logic Simplification
+
+Logic simplification reduces complex Boolean expressions into smaller and more efficient hardware structures.
+
+Synthesis tools automatically simplify logic using Boolean algebra and optimization algorithms.
+
+---
+---
+
+## Labs
 
 On Day 3, we learned how Yosys can automatically simplify (optimize) logic designs to use fewer gates than a naive implementation would require. We explored both **combinational** and **sequential** optimization through seven example codes.
 
