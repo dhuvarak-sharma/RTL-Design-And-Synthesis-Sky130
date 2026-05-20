@@ -1,10 +1,59 @@
 # Day 5 — If/Case Hazards, For Loops, and Generate Blocks
 
-[← Back to Main README](./README.md)
+## Theory Topics Covered
+---
+
+### Inferred Latches
+
+An inferred latch is unintentionally generated when all output conditions are not defined inside a combinational always block.
+
+Latches can create:
+
+- Timing issues
+- Unpredictable behavior
+- Synthesis mismatches
+
+The workshop demonstrated how incomplete coding styles accidentally infer latches.
 
 ---
 
-## Overview
+### For Loops
+
+For loops help reduce repetitive Verilog code and improve scalability for large hardware structures.
+
+They are especially useful in:
+
+- Multiplexers
+- Demultiplexers
+- Bitwise operations
+- Array-based hardware structures
+
+---
+
+### Generate Blocks
+
+Generate blocks are used for repetitive hardware instantiation during synthesis. They are commonly used when multiple identical hardware blocks are required.
+
+Generate blocks are especially useful in:
+
+- Ripple Carry Adders
+- Register Arrays
+- Large Arithmetic Structures
+
+---
+
+### Ripple Carry Adders
+
+A Ripple Carry Adder (RCA) is a combinational arithmetic circuit formed by connecting multiple full adders in series.
+
+Each carry output propagates into the next stage, creating a ripple effect through the circuit.
+
+Ripple Carry Adders are simple and area-efficient but may become slower for large bit-widths due to carry propagation delay.
+
+---
+---
+
+## Labs
 
 Day 5 covered two major topics. The first was understanding how poorly written `if` and `case` statements can cause **unintended latch inference** — a common mistake for beginners. The second was learning how to use **for loops** and **generate blocks** to write scalable, efficient hardware descriptions.
 
