@@ -387,4 +387,3 @@ Clearly, we can see that `num1 + num2 = sum`, as it is in the code. For example:
 
 ---
 
-[← Day 4](./Day4.md) | [Back to Main README](./README.md)
