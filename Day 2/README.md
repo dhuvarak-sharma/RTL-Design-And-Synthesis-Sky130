@@ -104,14 +104,14 @@ synth -top multiple_modules
 
 From the report generated, we can see that `sub_module1` has an AND gate, `sub_module2` has an OR gate, and the entire design has a total of 2 gates — 1 AND gate and 1 OR gate.
 
-![Synthesis report for multiple_modules](images/image11.png)
+![Synthesis report for multiple_modules](../images/image11.png)
 
 ```bash
 abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show multiple_modules
 ```
 
-![Hierarchical schematic of multiple_modules](images/image12.png)
+![Hierarchical schematic of multiple_modules](../images/image12.png)
 
 Here, we can see that the gates have been instantiated in the form of their respective modules, rather than as direct gates. This type of representation is called a **hierarchical design**, as the hierarchy of the design is preserved.
 
@@ -122,7 +122,7 @@ write_verilog -noattr multiple_modules_hier.v
 !gvim multiple_modules_hier.v
 ```
 
-![Hierarchical netlist in gVim](images/image13.png)
+![Hierarchical netlist in gVim](../images/image13.png)
 
 As we can see, the hierarchy of the code is still preserved. This is an example of hierarchical synthesis.
 
@@ -140,11 +140,11 @@ write_verilog -noattr multiple_modules_flat.v
 !gvim multiple_modules_flat.v
 ```
 
-![Flat netlist in gVim](images/image14.png)
+![Flat netlist in gVim](../images/image14.png)
 
 Here, we can see that the file is not in the proper hierarchy from before, and that all the modules are compressed into the same file. This is an example of flat synthesis. We don't see the `sub_modules`, but instead the underlying components of the sub-modules.
 
-![Flat synthesis schematic](images/image15.png)
+![Flat synthesis schematic](../images/image15.png)
 
 > **Sub-module synthesis tip:** You can also synthesize a single sub-module using `synth -top <sub_module_name>`. This is especially useful for large designs or when a module is repeated many times — synthesize once, and reuse the result everywhere it appears (similar to how a CPU cache reuses data).
 
@@ -191,13 +191,13 @@ iverilog dff_asyncres.v tb_dff_asyncres.v
 gtkwave tb_dff_asyncres.vcd
 ```
 
-![Asynchronous reset waveform - full view](images/image16.png)
+![Asynchronous reset waveform - full view](../images/image16.png)
 
-![Asynchronous reset waveform - detail view](images/image17.png)
+![Asynchronous reset waveform - detail view](../images/image17.png)
 
 Clearly, the asynchronous reset goes low before the clock, so the `q` pin (output) is synchronized with the clock and takes the value of `d` whenever there is a posedge.
 
-![Asynchronous reset waveform - annotated](images/image18.png)
+![Asynchronous reset waveform - annotated](../images/image18.png)
 
 Here, before reset became high, the `q` pin became high on the clock posedge since the `d` pin was high. However, after the reset came, `q` is no longer synchronized with the clock, and became low immediately after the reset was asserted. This is asynchronous reset's core functionality.
 
@@ -224,13 +224,13 @@ iverilog dff_async_set.v tb_dff_async_set.v
 gtkwave tb_dff_async_set.vcd
 ```
 
-![Asynchronous set waveform - full view](images/image19.png)
+![Asynchronous set waveform - full view](../images/image19.png)
 
-![Asynchronous set waveform - detail view](images/image20.png)
+![Asynchronous set waveform - detail view](../images/image20.png)
 
 Here, as the set is low, the `q` pin follows the clock as usual and takes the value of the `d` pin at every posedge.
 
-![Asynchronous set waveform - set goes high](images/image21.png)
+![Asynchronous set waveform - set goes high](../images/image21.png)
 
 Here, the set becomes high. Thus, the `q` pin does not wait for the next posedge to become high, but instead directly becomes high without being synchronized with the clock. This is the functionality of an asynchronous set.
 
@@ -257,13 +257,13 @@ iverilog dff_syncres.v tb_dff_syncres.v
 gtkwave tb_dff_syncres.vcd
 ```
 
-![Synchronous reset waveform - full view](images/image22.png)
+![Synchronous reset waveform - full view](../images/image22.png)
 
-![Synchronous reset waveform - detail view](images/image23.png)
+![Synchronous reset waveform - detail view](../images/image23.png)
 
 Here, the reset went low, so the `q` pin follows the clock posedge as normal.
 
-![Synchronous reset waveform - reset goes high](images/image24.png)
+![Synchronous reset waveform - reset goes high](../images/image24.png)
 
 However, when the reset became high, unlike an asynchronous reset, the `q` pin waits for the clock's posedge to become low. Thus, the `q` pin is "synchronized" with the clock even when a reset occurs. This is the functionality of a synchronous reset.
 
@@ -285,7 +285,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![Synthesized asynchronous reset flip-flop](images/image25.png)
+![Synthesized asynchronous reset flip-flop](../images/image25.png)
 
 ### Synthesizing Asynchronous Set
 
@@ -299,7 +299,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![Synthesized asynchronous set flip-flop](images/image26.png)
+![Synthesized asynchronous set flip-flop](../images/image26.png)
 
 ### Synthesizing Synchronous Reset
 
@@ -313,7 +313,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![Synthesized synchronous reset flip-flop](images/image27.png)
+![Synthesized synchronous reset flip-flop](../images/image27.png)
 
 ---
 
