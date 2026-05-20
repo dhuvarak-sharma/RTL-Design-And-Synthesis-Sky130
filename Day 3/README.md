@@ -90,7 +90,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![opt_check synthesis result — AND gate](images/image28.png)
+![opt_check synthesis result — AND gate](../images/image28.png)
 
 We expected an AND gate, and we got an AND gate after optimization. Thus, optimization was successful.
 
@@ -117,7 +117,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![opt_check2 synthesis result — OR gate](images/image29.png)
+![opt_check2 synthesis result — OR gate](../images/image29.png)
 
 We got an OR gate as expected, thus optimization was successful.
 
@@ -149,7 +149,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![opt_check3 synthesis result — 3-input AND gate](images/image30.png)
+![opt_check3 synthesis result — 3-input AND gate](../images/image30.png)
 
 We got a 3-input AND gate as we expected, thus optimization was successful.
 
@@ -176,7 +176,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![opt_check4 synthesis result — XNOR gate](images/image31.png)
+![opt_check4 synthesis result — XNOR gate](../images/image31.png)
 
 The optimization shows that `opt_check4` simplifies down to an XNOR gate, and that the final output does not depend on the `b` pin.
 
@@ -224,7 +224,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![multiple_module_opt synthesis result — AND and OR gate](images/image32.png)
+![multiple_module_opt synthesis result — AND and OR gate](../images/image32.png)
 
 We can see that the final optimization shows an AND gate and an OR gate, as we expected.
 
@@ -262,7 +262,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![dff_const1 synthesis result — flop retained](images/image33.png)
+![dff_const1 synthesis result — flop retained](../images/image33.png)
 
 This is the optimized version of the D flip-flop file. The flip-flop is retained in the synthesized output.
 
@@ -296,7 +296,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![dff_const2 synthesis result — constant 1 output](images/image34.png)
+![dff_const2 synthesis result — constant 1 output](../images/image34.png)
 
 We can see that the output is always `1` regardless of input. The flip-flop is completely removed.
 
