@@ -2,9 +2,66 @@
 
 [← Back to Main README](./README.md)
 
+- Better module reuse
+- Faster synthesis for large designs
+
 ---
 
-## Overview
+### Flat Synthesis
+
+Flat synthesis removes module hierarchy by combining all modules into a single large design before optimization.
+
+Advantages include:
+
+- Better global optimization
+- Reduced redundant logic
+- Potential area and timing improvements
+
+However, flat synthesis can make debugging more difficult in very large designs.
+
+---
+
+### Flip-Flop Coding Styles
+
+Flip-flops are sequential storage elements used to store binary information. Different coding styles produce different hardware behaviors.
+
+The workshop explored:
+
+- Asynchronous Reset D Flip-Flops
+- Asynchronous Set D Flip-Flops
+- Synchronous Reset D Flip-Flops
+
+These are widely used in processors, controllers, counters, and memory systems.
+
+---
+
+### Asynchronous Reset
+
+An asynchronous reset forces the output of a flip-flop into a known state immediately, without waiting for a clock edge.
+
+This is commonly used in emergency shutdown or safety-critical systems.
+
+---
+
+### Asynchronous Set
+
+An asynchronous set immediately drives the output high when activated, independent of the clock.
+
+This is useful when systems must initialize into a logic-high state instantly.
+
+---
+
+### Synchronous Reset
+
+A synchronous reset changes the flip-flop output only on a clock edge. Unlike asynchronous resets, it remains synchronized with the clock signal.
+
+Synchronous resets help reduce timing-related issues in digital systems.
+
+---
+
+---
+
+## Labs
 
 Day 2 went deeper into understanding the Sky130 library file, the difference between hierarchical and flat synthesis, and how different types of flip-flops are coded, simulated, and synthesized.
 
