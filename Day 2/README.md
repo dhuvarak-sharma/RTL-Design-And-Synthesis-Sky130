@@ -339,4 +339,3 @@ Input  = 6  (110)  →  Output = 6  (0110)
 
 ---
 
-[← Day 1](./Day1.md) | [Next: Day 3 →](./Day3.md)
