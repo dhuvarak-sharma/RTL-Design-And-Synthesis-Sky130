@@ -1,6 +1,6 @@
 # RTL Design and Synthesis using Sky130 Technology
 
-> **Author:** [Your Name Here]  
+> **Author:** Dhuvarak Sriram Sharma  
 > **Workshop Reference:** [VSD Sky130 RTL Design and Synthesis Workshop](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop)
 
 ---
