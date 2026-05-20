@@ -1,10 +1,64 @@
 # Day 1 — Installation and Reading a Waveform
 
 [← Back to Main README](./README.md)
+---
+---
+
+### Introduction to Icarus Verilog
+
+Icarus Verilog (iverilog) is an open-source Verilog simulator used for compiling and simulating RTL designs. During the workshop, it was used to:
+
+- Compile Verilog RTL files
+- Execute simulations
+- Generate waveform dump files (.vcd)
+- Verify hardware behavior before synthesis
 
 ---
 
-## Overview
+### Introduction to GTKWave
+
+GTKWave is a waveform visualization tool used for viewing signal transitions generated during simulation. It helps engineers analyze timing relationships, debug logic issues, and verify the correctness of digital designs.
+
+Waveforms generated from Value Change Dump (VCD) files were inspected throughout the workshop to study signal behavior.
+
+---
+
+### Introduction to Yosys
+
+Yosys is an open-source RTL synthesis suite used to convert Verilog RTL code into gate-level netlists using standard cell libraries. It plays a major role in digital front-end VLSI design.
+
+During the workshop, Yosys was used for:
+
+- RTL synthesis
+- Logic optimization
+- Technology mapping
+- Netlist generation
+- Hardware visualization
+
+---
+
+### Standard Cell Libraries
+
+Standard cell libraries contain pre-designed hardware cells such as AND gates, OR gates, multiplexers, flip-flops, buffers, and inverters. These cells are used by synthesis tools to map RTL logic into real hardware.
+
+The SKY130 standard cell library was used throughout the workshop.
+
+---
+
+### Gate Flavours (Area, Power, Performance)
+
+Different versions of the same logic gate may exist in a library with different design tradeoffs.
+
+- High-performance cells prioritize speed
+- Low-power cells reduce power consumption
+- Small-area cells reduce silicon usage
+
+These different implementations are commonly referred to as gate flavours.
+
+---
+---
+
+## Labs
 
 On Day 1, I set up the entire lab environment from scratch. This involved cloning the workshop repository, installing the simulation tools (iverilog and GTKWave), running my first simulation, and getting a first look at how Yosys synthesizes a design. I used a simple **2:1 Multiplexer (MUX)** as the example design throughout the day.
 
