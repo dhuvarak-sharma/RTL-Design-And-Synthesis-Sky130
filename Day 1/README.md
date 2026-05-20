@@ -1,6 +1,5 @@
 # Day 1 — Installation and Reading a Waveform
 
-[← Back to Main README](./README.md)
 ---
 
 ### Introduction to Icarus Verilog
