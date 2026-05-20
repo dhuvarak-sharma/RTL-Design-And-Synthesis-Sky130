@@ -195,4 +195,4 @@ From this waveform, we can see that the output `d` is now receiving the **new va
 
 ---
 
-[← Day 3](./Day3.md) | [Next: Day 5 →](./Day5.md)
+
