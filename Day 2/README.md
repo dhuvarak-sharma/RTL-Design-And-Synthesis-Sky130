@@ -1,6 +1,5 @@
 # Day 2 — Liberty Files, Hierarchical/Flat Synthesis, and Flip-Flops
 
-[← Back to Main README](./README.md)
 
 - Better module reuse
 - Faster synthesis for large designs
