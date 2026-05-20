@@ -311,4 +311,3 @@ We can see that the output is always `1` regardless of input. The flip-flop is c
 
 ---
 
-[← Day 2](./Day2.md) | [Next: Day 4 →](./Day4.md)
