@@ -1,10 +1,57 @@
 # Day 4 — Gate Level Simulation (GLS) and Simulation-Synthesis Mismatches
 
-[← Back to Main README](./README.md)
+## Theory Topics Covered
+
+### Gate-Level Simulation (GLS)
+
+Gate-Level Simulation is performed after synthesis using the generated gate-level netlist. Unlike RTL simulation, GLS verifies how the synthesized hardware behaves using actual gates from the standard cell library.
+
+GLS helps detect:
+
+- Timing-related issues
+- Synthesis mismatches
+- Improper RTL coding practices
+- Hardware inference problems
 
 ---
 
-## Overview
+### Blocking vs Non-Blocking Assignments
+
+Verilog supports two major assignment styles:
+
+- Blocking assignments (`=`)
+- Non-blocking assignments (`<=`)
+
+Blocking assignments execute sequentially within an always block, while non-blocking assignments update simultaneously after the block execution.
+
+Proper usage is essential for avoiding unintended hardware behavior.
+
+---
+
+### Synthesis-Simulation Mismatch
+
+A synthesis-simulation mismatch occurs when RTL simulation behavior differs from the behavior of the synthesized hardware.
+
+This commonly happens due to:
+
+- Incorrect sensitivity lists
+- Incomplete conditional statements
+- Improper assignment styles
+- Unintended latch inference
+
+---
+
+### Importance of Proper Sensitivity Lists
+
+Sensitivity lists determine when an always block executes. Incorrect sensitivity lists can produce simulation errors and mismatches.
+
+Using `always @(*)` ensures that the block responds to changes in all relevant signals.
+
+---
+
+---
+
+## Labs
 
 On Day 4, we were introduced to **Gate Level Simulation (GLS)** — the process of simulating the synthesized netlist instead of the original RTL code. This lets us verify that the synthesized design behaves identically to what we intended. We also studied two important classes of bugs that GLS can help expose.
 
