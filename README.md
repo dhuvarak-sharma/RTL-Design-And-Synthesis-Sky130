@@ -9,7 +9,7 @@
 
 This repository contains my personal lab notes and documentation from the **VSD Sky130 RTL Design and Synthesis Workshop**. Over the course of this workshop, I learned how to simulate, synthesize, and optimize digital logic designs using industry-standard open-source tools — all based on the **Sky130 process node** by SkyWater Technology.
 
-This was my first time working with RTL design tools, and I documented each day's work carefully so that anyone (including future me!) can follow along and reproduce the results.
+This was my first time working with RTL design tools, and I documented each day's work carefully so that anyone can follow along and reproduce the results.
 
 ---
 
