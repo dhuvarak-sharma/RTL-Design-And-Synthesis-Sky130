@@ -79,11 +79,11 @@ endmodule
 
 Here, the output `y` becomes `i1` when `sel = 1`, otherwise `y = i0`. This is the functionality of the ternary operator.
 
-![RTL simulation waveform of ternary_operator_mux](images/image35.png)
+![RTL simulation waveform of ternary_operator_mux](../images/image35.png)
 
 After synthesizing the code, we get the following output:
 
-![Synthesized schematic of ternary_operator_mux](images/image36.png)
+![Synthesized schematic of ternary_operator_mux](../images/image36.png)
 
 We will now carry out GLS on this file.
 
@@ -99,7 +99,7 @@ iverilog /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_m
 gtkwave tb_ternary_operator_mux.vcd
 ```
 
-![GLS waveform of ternary_operator_mux](images/image37.png)
+![GLS waveform of ternary_operator_mux](../images/image37.png)
 
 The GLS waveform matches the RTL simulation waveform — no mismatch. The design is correct.
 
@@ -122,7 +122,7 @@ This code attempts to implement a multiplexer using an `always` block, but becau
 
 In order to correct the mistake, in the `always` block, instead of `sel`, we need to give `*` so that any changes in any of the signals will give a corresponding change in the output.
 
-![RTL simulation waveform of bad_mux — flop-like behaviour](images/image38.png)
+![RTL simulation waveform of bad_mux — flop-like behaviour](../images/image38.png)
 
 On viewing the waveform of the original `bad_mux.v`, we can see that `y` changes only according to `sel`. In the beginning, there was no activity in `sel`, so `y` was constantly holding the initial value of `i0`. However, when `sel` becomes high, `y` takes the value of `i1`. Then, when `sel` becomes low, `y` takes on the value of `i0`, which is high, and `y` remains high. Thus, `y` changes only with a change in the activity of `sel`, and not according to the incoming signals — the system acts like a flop. This is a **synthesis-simulation mismatch**.
 
@@ -139,7 +139,7 @@ write_verilog -noattr bad_mux_net.v
 
 We will now simulate the netlist after doing the GLS:
 
-![GLS waveform of bad_mux — correct mux behaviour after GLS](images/image39.png)
+![GLS waveform of bad_mux — correct mux behaviour after GLS](../images/image39.png)
 
 After performing GLS, we can see that the `y` (output) signal now varies with any change in the input signals, and not just due to the `sel` signal. The system now behaves like a multiplexer and not a flop. Thus, we have fixed this bad mux.
 
@@ -159,7 +159,7 @@ endmodule
 
 In this code, within the `always` block, in the first statement, `d` takes on a value using an **old value** of `x`, and then in the second statement the value of `x` is updated to the newest value. Thus, `d` always uses the old value of `x`, and ends up being delayed by one cycle. This is not a syntactical issue, but a **logical/semantic error**.
 
-![RTL simulation waveform of blocking_caveat — one-cycle delay](images/image40.png)
+![RTL simulation waveform of blocking_caveat — one-cycle delay](../images/image40.png)
 
 At the selected point we can see that `a = 0`, `b = 0`, `c = 1`. Thus `a | b = x = 0`, and `x & c = 0`. However, `d` (the output signal) has the value of `1`. This is because the **previous value** of `x` is used, where `x` was `1`. Thus `x & c` results in `1`. There is a one-cycle delay in the system.
 
@@ -175,11 +175,11 @@ write_verilog -noattr blocking_caveat_net.v
 show
 ```
 
-![Synthesized schematic of blocking_caveat](images/image41.png)
+![Synthesized schematic of blocking_caveat](../images/image41.png)
 
 Let us view the new waveform now:
 
-![GLS waveform of blocking_caveat — cycle delay fixed](images/image42.png)
+![GLS waveform of blocking_caveat — cycle delay fixed](../images/image42.png)
 
 From this waveform, we can see that the output `d` is now receiving the **new values** of `a | b` as input. Thus, it is in sync with the input signals `a`, `b`, and `c`. The one-cycle delay has been fixed due to gate-level synthesis.
 
