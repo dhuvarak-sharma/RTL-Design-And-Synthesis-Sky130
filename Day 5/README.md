@@ -80,11 +80,11 @@ endmodule
 
 Here, the `else` statement is not given. Thus, **inferred latching** takes place, and the system puts the value of `y` as it is for the else condition. The design acts like a D-Latch. Let us view the issues now:
 
-![Waveform of incomp_if — latch behaviour visible](images/image43.png)
+![Waveform of incomp_if — latch behaviour visible](../images/image43.png)
 
 We can see that whenever `i0` goes low, `y` is latching onto its previous value.
 
-![Zoomed waveform of incomp_if — latching confirmed](images/image44.png)
+![Zoomed waveform of incomp_if — latching confirmed](../images/image44.png)
 
 From this zoomed-in view, we can see that `y` latches onto its previous value. Our aim was to code a MUX, but instead we got a D-Latch.
 
@@ -99,7 +99,7 @@ abc -liberty /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_f
 show
 ```
 
-![Synthesis result of incomp_if — D-Latch inferred](images/image45.png)
+![Synthesis result of incomp_if — D-Latch inferred](../images/image45.png)
 
 Clearly, the synthesis tool has also inferred a D-Latch, as we expected.
 
@@ -122,11 +122,11 @@ The code has an incomplete if-else structure because there is no final `else` co
 
 Let us view the waveform of this code:
 
-![Waveform of incomp_if2 — latch behaviour visible](images/image46.png)
+![Waveform of incomp_if2 — latch behaviour visible](../images/image46.png)
 
 Whenever `i0` is high, `y` follows `i1`. Whenever `i0` is low and `i2` is high, `y` follows `i3`. However, whenever both `i0` and `i2` are low, output `y` is constant. This is because `y` latches onto its previous value till either `i0` or `i2` becomes high. This waveform thus shows that this design also behaves like a D-Latch. Let us confirm by synthesizing the code.
 
-![Synthesis result of incomp_if2 — D-Latch inferred again](images/image47.png)
+![Synthesis result of incomp_if2 — D-Latch inferred again](../images/image47.png)
 
 Again, a D-Latch has been inferred by the tool.
 
@@ -148,11 +148,11 @@ endmodule
 
 This code behaves like a multiplexer. There is no error in this code. The `default` statement makes the case statement complete, so no latch is inferred. Let us view the waveform:
 
-![Waveform of comp_case — correct MUX behaviour](images/image48.png)
+![Waveform of comp_case — correct MUX behaviour](../images/image48.png)
 
 From the waveform, we can see that the code behaves like a multiplexer, as expected. There is no inferred latching. Thus, there are no issues in the code.
 
-![Synthesis result of comp_case — MUX confirmed](images/image49.png)
+![Synthesis result of comp_case — MUX confirmed](../images/image49.png)
 
 The synthesis also confirms that there is MUX-like behaviour.
 
@@ -179,17 +179,17 @@ endmodule
 
 From the code, we can infer that it is trying to be a MUX. However, due to the wildcard matching (`?`), the code loses its MUX-like behaviour as any value can come in place of the `?`. Thus, ambiguity, synthesis-simulation mismatches, and unintended latch behaviour may occur. Let us view the waveform:
 
-![Waveform of bad_case — latch behaviour when sel=11](images/image50.png)
+![Waveform of bad_case — latch behaviour when sel=11](../images/image50.png)
 
 Here, we can see that the output signal `y` latches onto its previous value and is constant when the `sel` signal is `11`. There is ambiguity about why such behaviour happens. Let us see what the synthesis tool infers:
 
-![Synthesis result of bad_case — mux inferred, mismatch with simulation](images/image51.png)
+![Synthesis result of bad_case — mux inferred, mismatch with simulation](../images/image51.png)
 
 Here, we can see that the tool has inferred a MUX, but we detected latch-like behaviour in the simulation. Thus, there is also a synthesis-simulation mismatch, as we expected.
 
 If we perform GLS on this code, the error and latching will get fixed:
 
-![GLS waveform of bad_case — latch behaviour removed](images/image52.png)
+![GLS waveform of bad_case — latch behaviour removed](../images/image52.png)
 
 We can see that now when the `sel` signal is `11`, the output is still being toggled with respect to `i3`. Thus, the latch-like behaviour has been removed, and the system does not get confused while selecting the value of `y`.
 
@@ -214,11 +214,11 @@ endmodule
 
 From the code, we can infer that there will be latch inference for `sel = 10` or `11`, and thus `y` retains its previous value. Let us view the waveform now:
 
-![Waveform of incomp_case — latch behaviour for sel=10,11](images/image53.png)
+![Waveform of incomp_case — latch behaviour for sel=10,11](../images/image53.png)
 
 In the encircled region, the value of `y` is constant, and is equal to the previous value of `y` (which was low). Thus, we can see the latch-like behaviour occurring here as well.
 
-![Synthesis result of incomp_case — D-Latch inferred](images/image54.png)
+![Synthesis result of incomp_case — D-Latch inferred](../images/image54.png)
 
 Even the synthesis tool is showing us that the D-Latch is influencing the output of `y`, as we expected.
 
@@ -252,7 +252,7 @@ endmodule
 
 This code implements a 4-input and 1-output (4:1) multiplexer using a `for` loop, where `sel` selects one of the four inputs (`i0`–`i3`) and assigns it to `y`. Let us view the waveform:
 
-![Waveform of mux_generate — correct MUX behaviour](images/image55.png)
+![Waveform of mux_generate — correct MUX behaviour](../images/image55.png)
 
 We can see that the `sel` signal selects different values for `y` one by one, just as we expected.
 
@@ -287,7 +287,7 @@ endmodule
 
 This is an example of a 1:8 demultiplexer where the input `i` is routed to one output (`o0`–`o7`) based on the value of `sel`. Let us view the waveform now:
 
-![Waveform of demux_case — demux behaviour confirmed](images/image56.png)
+![Waveform of demux_case — demux behaviour confirmed](../images/image56.png)
 
 From the waveform, it is evident that as `sel` changes, although the input is constant, the output keeps switching from `o0` to `o7`. Thus, the presence of a demux is confirmed.
 
@@ -319,7 +319,7 @@ endmodule
 
 This code also has the same functionality as the previous code — implementing a 1:8 demultiplexer. Let us view its waveform:
 
-![Waveform of demux_generate — same output as demux_case](images/image57.png)
+![Waveform of demux_generate — same output as demux_case](../images/image57.png)
 
 Clearly, the output is the same as the previous code. However, the number of lines needed to type this code is much less than that of the case statement. Using `for` loops makes multi-bit input or output codes very efficient.
 
@@ -371,7 +371,7 @@ iverilog fa.v rca.v tb_rca.v
 gtkwave tb_rca.vcd
 ```
 
-![Waveform of rca — num1 + num2 = sum verified](images/image58.png)
+![Waveform of rca — num1 + num2 = sum verified](../images/image58.png)
 
 Clearly, we can see that `num1 + num2 = sum`, as it is in the code. For example: `num1 = 244`, `num2 = 15`, `sum = num1 + num2 = 259`. This is true at any other point in the waveform as well — exactly as we expected from the code.
 
