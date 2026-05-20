@@ -44,11 +44,11 @@ RTL-Design-And-Synthesis-Sky130/
 
 | Day | Topics Covered |
 |-----|----------------|
-| [Day 1](./Day1.md) | Cloning the workshop repo, installing tools, simulating a MUX with iverilog and GTKWave, intro to Yosys synthesis |
-| [Day 2](./Day2.md) | Understanding the Sky130 `.lib` file, hierarchical vs. flat synthesis, flip-flop types and their synthesis |
-| [Day 3](./Day3.md) | Combinational and sequential logic optimizations using Yosys |
-| [Day 4](./Day4.md) | Gate Level Simulation (GLS), fixing a bad MUX, understanding blocking statement issues |
-| [Day 5](./Day5.md) | Incomplete if/case hazards (latch inference), for loops, generate blocks, ripple carry adder |
+| Day 1 | Cloning the workshop repo, installing tools, simulating a MUX with iverilog and GTKWave, intro to Yosys synthesis |
+| Day 2 | Understanding the Sky130 `.lib` file, hierarchical vs. flat synthesis, flip-flop types and their synthesis |
+| Day 3 | Combinational and sequential logic optimizations using Yosys |
+| Day 4 | Gate Level Simulation (GLS), fixing a bad MUX, understanding blocking statement issues |
+| Day 5 | Incomplete if/case hazards (latch inference), for loops, generate blocks, ripple carry adder |
 
 ---
 
