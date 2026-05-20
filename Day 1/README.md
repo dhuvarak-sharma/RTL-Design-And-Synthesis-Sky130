@@ -2,7 +2,6 @@
 
 [← Back to Main README](./README.md)
 ---
----
 
 ### Introduction to Icarus Verilog
 
