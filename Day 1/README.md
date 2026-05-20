@@ -70,7 +70,7 @@ The first step was to download all the Verilog source files and library files ne
 git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 ```
 
-![Cloning the repository](images/image1.png)
+![Cloning the repository](../images/image1.png)
 
 ---
 
@@ -84,9 +84,9 @@ sudo apt install gtkwave
 - **iverilog** — an open-source Verilog simulator. It compiles our Verilog code and runs the simulation.
 - **GTKWave** — a waveform viewer. It reads the simulation output and lets us see how signals change over time, like an oscilloscope on a computer.
 
-![Installing iverilog](images/image2.png)
+![Installing iverilog](../images/image2.png)
 
-![Installing gtkwave](images/image3.png)
+![Installing gtkwave](../images/image3.png)
 
 The system is now ready, and we can perform future labs in the system.
 
@@ -100,7 +100,7 @@ We will be loading the files present in the `verilog_files` folder onto iverilog
 iverilog good_mux.v tb_good_mux.v
 ```
 
-![Running iverilog on good_mux](images/image4.png)
+![Running iverilog on good_mux](../images/image4.png)
 
 When we load the file onto the simulator iverilog, a file called `a.out` is created. On running the `a.out` file, a VCD (Value Change Dump) file is generated. Loading this VCD file onto GTKWave lets us view the waveform of the `good_mux.v` file.
 
@@ -109,9 +109,9 @@ When we load the file onto the simulator iverilog, a file called `a.out` is crea
 gtkwave tb_good_mux.vcd
 ```
 
-![GTKWave waveform of good_mux](images/image5.png)
+![GTKWave waveform of good_mux](../images/image5.png)
 
-![GTKWave waveform zoomed](images/image6.png)
+![GTKWave waveform zoomed](../images/image6.png)
 
 ---
 
@@ -123,7 +123,7 @@ To open and compare the testbench and the design side-by-side in gVim:
 gvim tb_good_mux.v -o good_mux.v
 ```
 
-![gVim file structure view](images/image7.png)
+![gVim file structure view](../images/image7.png)
 
 The **design file** (`good_mux.v`) contains the actual hardware logic. The **testbench** (`tb_good_mux.v`) is a wrapper that feeds different inputs to the design so we can check if it behaves correctly.
 
@@ -165,7 +165,7 @@ show
 
 The `abc` command is what actually converts the RTL logic into real gates from the library. `show` opens a visual diagram of the synthesized circuit.
 
-![Yosys synthesized schematic of good_mux](images/image8.png)
+![Yosys synthesized schematic of good_mux](../images/image8.png)
 
 ---
 
@@ -178,7 +178,7 @@ write_verilog good_mux_netlist.v
 !gvim good_mux_netlist.v
 ```
 
-![good_mux netlist in gVim](images/image9.png)
+![good_mux netlist in gVim](../images/image9.png)
 
 The netlist is a Verilog file that no longer contains behavioral code — instead it describes the design purely in terms of the actual gates used from the Sky130 library.
 
