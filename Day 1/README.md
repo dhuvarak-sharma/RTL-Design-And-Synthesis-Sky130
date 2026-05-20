@@ -193,4 +193,4 @@ The netlist is a Verilog file that no longer contains behavioral code — instea
 
 ---
 
-[Next: Day 2 →](./Day2.md)
+
