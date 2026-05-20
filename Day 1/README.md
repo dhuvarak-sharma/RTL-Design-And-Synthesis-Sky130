@@ -72,7 +72,7 @@ The first step was to download all the Verilog source files and library files ne
 git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 ```
 
-![Cloning the repository](main/images/image1.png)
+![Cloning the repository](images/image1.png)
 
 ---
 
