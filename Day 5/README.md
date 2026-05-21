@@ -1,7 +1,6 @@
 # Day 5 — If/Case Hazards, For Loops, and Generate Blocks
 
 ## Theory Topics Covered
----
 
 ### Inferred Latches
 
@@ -50,16 +49,13 @@ Each carry output propagates into the next stage, creating a ripple effect throu
 
 Ripple Carry Adders are simple and area-efficient but may become slower for large bit-widths due to carry propagation delay.
 
----
----
-
 ## Labs
 
 Day 5 covered two major topics. The first was understanding how poorly written `if` and `case` statements can cause **unintended latch inference** — a common mistake for beginners. The second was learning how to use **for loops** and **generate blocks** to write scalable, efficient hardware descriptions.
 
 ---
 
-## Part 1 — If and Case Statements and Their Impacts on Hardware
+### Part 1 — If and Case Statements and Their Impacts on Hardware
 
 ### What is Latch Inference?
 
@@ -226,9 +222,9 @@ Even the synthesis tool shows that the D-Latch is influencing the output of `y`,
 
 ---
 
-## Part 2 — For Loops and Generate Blocks
+### Part 2 — For Loops and Generate Blocks
 
----
+
 
 ### 4:1 MUX Using For Loops
 
