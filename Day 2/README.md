@@ -1,11 +1,5 @@
 # Day 2 — Liberty Files, Hierarchical/Flat Synthesis, and Flip-Flops
 
-
-- Better module reuse
-- Faster synthesis for large designs
-
----
-
 ### Flat Synthesis
 
 Flat synthesis removes module hierarchy by combining all modules into a single large design before optimization.
