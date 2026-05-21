@@ -47,9 +47,6 @@ Sensitivity lists determine when an always block executes. Incorrect sensitivity
 
 Using `always @(*)` ensures that the block responds to changes in all relevant signals.
 
----
-
----
 
 ## Labs
 
@@ -57,7 +54,7 @@ On Day 4, **Gate Level Simulation (GLS)** was introduced — the process of simu
 
 ---
 
-## What is Gate Level Simulation (GLS)?
+### What is Gate Level Simulation (GLS)?
 
 When Verilog is written, the behavioral RTL code is simulated to check functionality. After synthesis, the result is a **netlist** — a description of the actual gates and connections. GLS means running simulation on this netlist.
 
@@ -69,7 +66,7 @@ GLS uses the same testbench but feeds it the synthesized netlist along with the 
 
 ---
 
-## 1. Invoking and Experimenting with GLS (Ternary Operator MUX)
+### 1. Invoking and Experimenting with GLS (Ternary Operator MUX)
 
 ```verilog
 module ternary_operator_mux (input i0, input i1, input sel, output y);
@@ -105,7 +102,7 @@ The GLS waveform matches the RTL simulation waveform — no mismatch. The design
 
 ---
 
-## 2. Performing GLS on a Bad MUX
+### 2. Performing GLS on a Bad MUX
 
 ```verilog
 module bad_mux (input i0, input i1, input sel, output reg y);
@@ -145,7 +142,7 @@ After performing GLS, it can be seen that the `y` (output) signal now varies wit
 
 ---
 
-## 3. Analysing the Disadvantages of Blocking Statements
+### 3. Analysing the Disadvantages of Blocking Statements
 
 ```verilog
 module blocking_caveat (input a, input b, input c, output reg d);
