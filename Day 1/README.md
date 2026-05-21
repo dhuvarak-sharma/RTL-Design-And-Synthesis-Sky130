@@ -2,7 +2,7 @@
 
 ---
 
-### Introduction to Icarus Verilog
+### Icarus Verilog (iverilog)
 
 Icarus Verilog (iverilog) is an open-source Verilog simulator used for compiling and simulating RTL designs. During the workshop, it was used to:
 
@@ -13,7 +13,7 @@ Icarus Verilog (iverilog) is an open-source Verilog simulator used for compiling
 
 ---
 
-### Introduction to GTKWave
+### GTKWave
 
 GTKWave is a waveform visualization tool used for viewing signal transitions generated during simulation. It helps engineers analyze timing relationships, debug logic issues, and verify the correctness of digital designs.
 
@@ -21,7 +21,7 @@ Waveforms generated from Value Change Dump (VCD) files were inspected throughout
 
 ---
 
-### Introduction to Yosys
+### Yosys
 
 Yosys is an open-source RTL synthesis suite used to convert Verilog RTL code into gate-level netlists using standard cell libraries. It plays a major role in digital front-end VLSI design.
 
@@ -53,7 +53,6 @@ Different versions of the same logic gate may exist in a library with different 
 
 These different implementations are commonly referred to as gate flavours.
 
----
 ---
 
 ## Labs
