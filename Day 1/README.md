@@ -1,4 +1,20 @@
-# Day 1 — Installation and Reading a Waveform
+# Day 1 – Introduction to Verilog RTL Design and Synthesis
+
+## Theory Topics Covered
+
+### Introduction to RTL Design
+
+Register Transfer Level (RTL) Design is a hardware abstraction methodology used to describe how digital circuits transfer and process data between registers under the control of a clock signal. RTL forms the foundation of modern digital hardware design and is commonly written using Hardware Description Languages (HDLs) such as Verilog.
+
+In this workshop, RTL was used to model combinational and sequential circuits before converting them into real hardware using synthesis tools.
+
+---
+
+### Simulators and Testbenches
+
+A simulator is used to verify whether a hardware design behaves correctly before fabrication. Instead of directly implementing the hardware physically, the design is first tested virtually using simulation tools.
+
+A testbench is a separate Verilog module used to apply inputs to the design under test (DUT) and observe the outputs. Testbenches help validate the correctness of RTL logic under different input conditions.
 
 ---
 
