@@ -103,7 +103,7 @@ Day 2 went deeper into understanding the Sky130 library file, the difference bet
 
 ---
 
-## 1. Viewing the Sky130 Liberty (.lib) File
+### 1. Viewing the Sky130 Liberty (.lib) File
 
 ```bash
 gvim /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
@@ -123,7 +123,7 @@ Understanding the `.lib` file helps appreciate what's happening "under the hood"
 
 ---
 
-## 2. Hierarchical and Flat Synthesis
+### 2. Hierarchical and Flat Synthesis
 
 ### Hierarchical Synthesis
 
@@ -195,7 +195,7 @@ Here, it can be seen that the file is not in the proper hierarchy from before, a
 
 ---
 
-## 3. Learning About Flops
+### 3. Learning About Flops
 
 A **flip-flop** stores a single bit of data. Its primary role in digital design is to:
 - Remove glitches between combinational logic stages
@@ -306,7 +306,7 @@ However, when the reset became high, unlike an asynchronous reset, the `q` pin w
 
 ---
 
-## 4. Synthesizing Flops
+### 4. Synthesizing Flops
 
 When synthesizing flip-flops, the `dfflibmap` command must be run **before** `abc` to tell Yosys which flip-flop cells to use from the library.
 
@@ -354,7 +354,7 @@ show
 
 ---
 
-## 5. Interesting Optimizations
+### 5. Interesting Optimizations
 
 If there is a multi-bit input and a wider output, the synthesis tool can sometimes realize the output is just a shifted version of the input — and implement it with no gates at all (just wires).
 
