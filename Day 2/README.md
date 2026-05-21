@@ -95,7 +95,7 @@ Synchronous resets help reduce timing-related issues in digital systems.
 
 ---
 
----
+
 
 ## Labs
 
