@@ -74,7 +74,7 @@ gvim /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd_
 
 ![Sky130 .lib file opened in gVim](images/image10.png)
 
-The **Liberty (.lib) file** is essentially a catalog of all the real hardware cells the synthesis tool can use. Opening it gives us information about:
+The **Liberty (.lib) file** is essentially a catalog of all the real hardware cells the synthesis tool can use. Opening it gives information about:
 
 - The **process conditions** the library was characterized at (temperature: 25°C, voltage: 1.8V)
 - All available **gates and cells** (AND, OR, NOT, flip-flops, etc.)
@@ -82,7 +82,7 @@ The **Liberty (.lib) file** is essentially a catalog of all the real hardware ce
 - **Power consumption** of each cell
 - **Pin descriptions** — inputs, outputs, and their behavior
 
-Understanding the `.lib` file helps us appreciate what's happening "under the hood" when Yosys picks cells during synthesis.
+Understanding the `.lib` file helps appreciate what's happening "under the hood" when Yosys picks cells during synthesis.
 
 ---
 
@@ -90,7 +90,7 @@ Understanding the `.lib` file helps us appreciate what's happening "under the ho
 
 ### Hierarchical Synthesis
 
-**Hierarchical Synthesis** preserves the module structure of the original design. When you synthesize a top-level module that contains sub-modules, the synthesis result still shows those sub-modules as distinct blocks instead of collapsing everything into a flat list of gates.
+**Hierarchical Synthesis** preserves the module structure of the original design. When a top-level module that contains sub-modules is synthesized, the synthesis result still shows those sub-modules as distinct blocks instead of collapsing everything into a flat list of gates.
 
 #### Running Hierarchical Synthesis
 
@@ -102,7 +102,7 @@ read_verilog multiple_modules.v
 synth -top multiple_modules
 ```
 
-From the report generated, we can see that `sub_module1` has an AND gate, `sub_module2` has an OR gate, and the entire design has a total of 2 gates — 1 AND gate and 1 OR gate.
+From the report generated, it can be seen that `sub_module1` has an AND gate, `sub_module2` has an OR gate, and the entire design has a total of 2 gates — 1 AND gate and 1 OR gate.
 
 ![Synthesis report for multiple_modules](../images/image11.png)
 
@@ -113,7 +113,7 @@ show multiple_modules
 
 ![Hierarchical schematic of multiple_modules](../images/image12.png)
 
-Here, we can see that the gates have been instantiated in the form of their respective modules, rather than as direct gates. This type of representation is called a **hierarchical design**, as the hierarchy of the design is preserved.
+Here, it can be seen that the gates have been instantiated in the form of their respective modules, rather than as direct gates. This type of representation is called a **hierarchical design**, as the hierarchy of the design is preserved.
 
 #### Writing the Hierarchical Netlist
 
@@ -124,7 +124,7 @@ write_verilog -noattr multiple_modules_hier.v
 
 ![Hierarchical netlist in gVim](../images/image13.png)
 
-As we can see, the hierarchy of the code is still preserved. This is an example of hierarchical synthesis.
+As seen above, the hierarchy of the code is still preserved. This is an example of hierarchical synthesis.
 
 ---
 
@@ -142,11 +142,11 @@ write_verilog -noattr multiple_modules_flat.v
 
 ![Flat netlist in gVim](../images/image14.png)
 
-Here, we can see that the file is not in the proper hierarchy from before, and that all the modules are compressed into the same file. This is an example of flat synthesis. We don't see the `sub_modules`, but instead the underlying components of the sub-modules.
+Here, it can be seen that the file is not in the proper hierarchy from before, and that all the modules are compressed into the same file. This is an example of flat synthesis. The `sub_modules` are not visible; instead, the underlying components of the sub-modules are shown.
 
 ![Flat synthesis schematic](../images/image15.png)
 
-> **Sub-module synthesis tip:** You can also synthesize a single sub-module using `synth -top <sub_module_name>`. This is especially useful for large designs or when a module is repeated many times — synthesize once, and reuse the result everywhere it appears (similar to how a CPU cache reuses data).
+> **Sub-module synthesis tip:** A single sub-module can also be synthesized using `synth -top <sub_module_name>`. This is especially useful for large designs or when a module is repeated many times — synthesize once, and reuse the result everywhere it appears (similar to how a CPU cache reuses data).
 
 #### When to Use Each Type
 
@@ -164,7 +164,7 @@ A **flip-flop** stores a single bit of data. Its primary role in digital design 
 - Remove glitches between combinational logic stages
 - Keep the entire design synchronized with a clock signal
 
-We explored three types of flip-flop resets/sets.
+Three types of flip-flop resets/sets were explored.
 
 ---
 
@@ -172,7 +172,7 @@ We explored three types of flip-flop resets/sets.
 
 The output `q` goes LOW **immediately** when reset is asserted, without waiting for the next clock edge.
 
-**Use case:** Emergency shutdown systems — we cannot afford to wait for the next clock edge in a safety-critical situation.
+**Use case:** Emergency shutdown systems — waiting for the next clock edge in a safety-critical situation is not an option.
 
 ```verilog
 module dff_asyncres (input clk, input async_reset, input d, output reg q);
@@ -319,7 +319,7 @@ show
 
 ## 5. Interesting Optimizations
 
-If we have a multi-bit input and a wider output, the synthesis tool can sometimes realize the output is just a shifted version of the input — and implement it with no gates at all (just wires).
+If there is a multi-bit input and a wider output, the synthesis tool can sometimes realize the output is just a shifted version of the input — and implement it with no gates at all (just wires).
 
 **Example:** A 3-bit input mapped to a 4-bit output where the output = input with a `0` appended at the MSB. This is equivalent to multiplying by 2, which in binary is just a left shift — no logic gates needed.
 
@@ -338,4 +338,3 @@ Input  = 6  (110)  →  Output = 6  (0110)
 - Asynchronous resets/sets act immediately; synchronous ones wait for the clock edge
 
 ---
-
