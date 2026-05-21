@@ -57,7 +57,7 @@ These different implementations are commonly referred to as gate flavours.
 
 ## Labs
 
-On Day 1, I set up the entire lab environment from scratch. This involved cloning the workshop repository, installing the simulation tools (iverilog and GTKWave), running my first simulation, and getting a first look at how Yosys synthesizes a design. I used a simple **2:1 Multiplexer (MUX)** as the example design throughout the day.
+On Day 1, the entire lab environment was set up from scratch. This involved cloning the workshop repository, installing the simulation tools (iverilog and GTKWave), running the first simulation, and getting a first look at how Yosys synthesizes a design. A simple **2:1 Multiplexer (MUX)** was used as the example design throughout the day.
 
 ---
 
@@ -80,20 +80,20 @@ sudo apt install iverilog
 sudo apt install gtkwave
 ```
 
-- **iverilog** — an open-source Verilog simulator. It compiles our Verilog code and runs the simulation.
+- **iverilog** — an open-source Verilog simulator. It compiles Verilog code and runs the simulation.
 - **GTKWave** — a waveform viewer. It reads the simulation output and lets us see how signals change over time, like an oscilloscope on a computer.
 
 ![Installing iverilog](../images/image2.png)
 
 ![Installing gtkwave](../images/image3.png)
 
-The system is now ready, and we can perform future labs in the system.
+The system is now ready, and future labs can be performed in the system.
 
 ---
 
 ## 3. Working with iverilog and GTKWave
 
-We will be loading the files present in the `verilog_files` folder onto iverilog and then viewing the waveform on GTKWave.
+The files present in the `verilog_files` folder were loaded onto iverilog and the waveform was viewed on GTKWave.
 
 ```bash
 iverilog good_mux.v tb_good_mux.v
@@ -101,7 +101,7 @@ iverilog good_mux.v tb_good_mux.v
 
 ![Running iverilog on good_mux](../images/image4.png)
 
-When we load the file onto the simulator iverilog, a file called `a.out` is created. On running the `a.out` file, a VCD (Value Change Dump) file is generated. Loading this VCD file onto GTKWave lets us view the waveform of the `good_mux.v` file.
+When the file is loaded onto the simulator iverilog, a file called `a.out` is created. On running the `a.out` file, a VCD (Value Change Dump) file is generated. Loading this VCD file onto GTKWave lets us view the waveform of the `good_mux.v` file.
 
 ```bash
 ./a.out
@@ -124,13 +124,13 @@ gvim tb_good_mux.v -o good_mux.v
 
 ![gVim file structure view](../images/image7.png)
 
-The **design file** (`good_mux.v`) contains the actual hardware logic. The **testbench** (`tb_good_mux.v`) is a wrapper that feeds different inputs to the design so we can check if it behaves correctly.
+The **design file** (`good_mux.v`) contains the actual hardware logic. The **testbench** (`tb_good_mux.v`) is a wrapper that feeds different inputs to the design so its correct behavior can be verified.
 
 ---
 
 ## 5. Introduction to Yosys (Synthesis)
 
-**Yosys** is an open-source synthesis tool. Its job is to take our RTL (Register Transfer Level) Verilog code and convert it into an actual gate-level netlist — meaning it figures out which real hardware cells (AND gates, OR gates, flip-flops, etc.) from the Sky130 library should be used.
+**Yosys** is an open-source synthesis tool. Its job is to take RTL (Register Transfer Level) Verilog code and convert it into an actual gate-level netlist — meaning it figures out which real hardware cells (AND gates, OR gates, flip-flops, etc.) from the Sky130 library should be used.
 
 ### Step 1 — Invoke Yosys
 
@@ -144,7 +144,7 @@ yosys
 read_liberty -lib /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-This tells Yosys which real hardware cells it is allowed to use when synthesizing our design.
+This tells Yosys which real hardware cells it is allowed to use when synthesizing the design.
 
 ### Step 3 — Read the Design and Synthesize
 
@@ -153,7 +153,7 @@ read_verilog good_mux.v
 synth -top good_mux
 ```
 
-> **Note:** If the design contains flip-flops, a special `dfflibmap` command must also be run. Since `good_mux.v` is a purely combinational circuit (no memory elements), we skip that step here.
+> **Note:** If the design contains flip-flops, a special `dfflibmap` command must also be run. Since `good_mux.v` is a purely combinational circuit (no memory elements), that step is skipped here.
 
 ### Step 4 — Map to Gates and View
 
@@ -170,7 +170,7 @@ The `abc` command is what actually converts the RTL logic into real gates from t
 
 ## 6. Writing the Netlist
 
-Finally, we write out the synthesized gate-level netlist to a new Verilog file:
+Finally, the synthesized gate-level netlist was written out to a new Verilog file:
 
 ```bash
 write_verilog good_mux_netlist.v
@@ -188,8 +188,6 @@ The netlist is a Verilog file that no longer contains behavioral code — instea
 - The simulation flow is: `iverilog` → `./a.out` → `gtkwave`
 - A **VCD file** is the bridge between simulation and waveform viewing
 - Yosys synthesis flow: `read_liberty` → `read_verilog` → `synth` → `abc` → `write_verilog`
-- The `abc` command is what maps our design to real hardware gates
+- The `abc` command is what maps the design to real hardware gates
 
 ---
-
-
