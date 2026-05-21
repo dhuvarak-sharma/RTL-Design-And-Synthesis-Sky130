@@ -49,9 +49,10 @@ Each carry output propagates into the next stage, creating a ripple effect throu
 
 Ripple Carry Adders are simple and area-efficient but may become slower for large bit-widths due to carry propagation delay.
 
+---
 ## Labs
 
-Day 5 covered two major topics. The first was understanding how poorly written `if` and `case` statements can cause **unintended latch inference** — a common mistake for beginners. The second was learning how to use **for loops** and **generate blocks** to write scalable, efficient hardware descriptions.
+Day 5 covered two major topics. The first was understanding how poorly written `if` and `case` statements can cause **unintended latch inference**. The second was learning how to use **for loops** and **generate blocks** to write scalable, efficient hardware descriptions.
 
 ---
 
