@@ -109,7 +109,7 @@ Day 2 went deeper into understanding the Sky130 library file, the difference bet
 gvim /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-![Sky130 .lib file opened in gVim](images/image10.png)
+![Sky130 .lib file opened in gVim](../images/image10.png)
 
 The **Liberty (.lib) file** is essentially a catalog of all the real hardware cells the synthesis tool can use. Opening it gives information about:
 
