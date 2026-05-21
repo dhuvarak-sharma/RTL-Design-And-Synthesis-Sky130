@@ -63,7 +63,7 @@ Day 5 covered two major topics. The first was understanding how poorly written `
 
 ### What is Latch Inference?
 
-In hardware, a **latch** is a storage element that holds its output value when no new input condition is being applied to it. If we write a combinational `always` block that doesn't cover all possible input conditions, the synthesis tool has no choice but to infer a latch to "remember" the previous output. This is almost always unintentional and leads to bugs.
+In hardware, a **latch** is a storage element that holds its output value when no new input condition is being applied to it. If a combinational `always` block is written without covering all possible input conditions, the synthesis tool has no choice but to infer a latch to "remember" the previous output. This is almost always unintentional and leads to bugs.
 
 ---
 
@@ -78,17 +78,17 @@ module incomp_if (input i0, input i1, input i2, output reg y);
 endmodule
 ```
 
-Here, the `else` statement is not given. Thus, **inferred latching** takes place, and the system puts the value of `y` as it is for the else condition. The design acts like a D-Latch. Let us view the issues now:
+Here, the `else` statement is not given. Thus, **inferred latching** takes place, and the system puts the value of `y` as it is for the else condition. The design acts like a D-Latch. The issues can be seen below:
 
 ![Waveform of incomp_if — latch behaviour visible](../images/image43.png)
 
-We can see that whenever `i0` goes low, `y` is latching onto its previous value.
+It can be seen that whenever `i0` goes low, `y` is latching onto its previous value.
 
 ![Zoomed waveform of incomp_if — latching confirmed](../images/image44.png)
 
-From this zoomed-in view, we can see that `y` latches onto its previous value. Our aim was to code a MUX, but instead we got a D-Latch.
+From this zoomed-in view, it can be seen that `y` latches onto its previous value. The aim was to code a MUX, but instead a D-Latch was obtained.
 
-Let us synthesize this code now:
+Synthesizing this code:
 
 ```bash
 yosys
@@ -101,7 +101,7 @@ show
 
 ![Synthesis result of incomp_if — D-Latch inferred](../images/image45.png)
 
-Clearly, the synthesis tool has also inferred a D-Latch, as we expected.
+Clearly, the synthesis tool has also inferred a D-Latch, as expected.
 
 ---
 
@@ -120,11 +120,11 @@ endmodule
 
 The code has an incomplete if-else structure because there is no final `else` condition. This causes latch inference, since `y` must store its old value when both conditions are false.
 
-Let us view the waveform of this code:
+Viewing the waveform of this code:
 
 ![Waveform of incomp_if2 — latch behaviour visible](../images/image46.png)
 
-Whenever `i0` is high, `y` follows `i1`. Whenever `i0` is low and `i2` is high, `y` follows `i3`. However, whenever both `i0` and `i2` are low, output `y` is constant. This is because `y` latches onto its previous value till either `i0` or `i2` becomes high. This waveform thus shows that this design also behaves like a D-Latch. Let us confirm by synthesizing the code.
+Whenever `i0` is high, `y` follows `i1`. Whenever `i0` is low and `i2` is high, `y` follows `i3`. However, whenever both `i0` and `i2` are low, output `y` is constant. This is because `y` latches onto its previous value till either `i0` or `i2` becomes high. This waveform thus shows that this design also behaves like a D-Latch. Synthesizing the code confirms this:
 
 ![Synthesis result of incomp_if2 — D-Latch inferred again](../images/image47.png)
 
@@ -146,15 +146,15 @@ module comp_case (input i0, input i1, input i2, input [1:0] sel, output reg y);
 endmodule
 ```
 
-This code behaves like a multiplexer. There is no error in this code. The `default` statement makes the case statement complete, so no latch is inferred. Let us view the waveform:
+This code behaves like a multiplexer. There is no error in this code. The `default` statement makes the case statement complete, so no latch is inferred. Viewing the waveform:
 
 ![Waveform of comp_case — correct MUX behaviour](../images/image48.png)
 
-From the waveform, we can see that the code behaves like a multiplexer, as expected. There is no inferred latching. Thus, there are no issues in the code.
+From the waveform, it can be seen that the code behaves like a multiplexer, as expected. There is no inferred latching. Thus, there are no issues in the code.
 
 ![Synthesis result of comp_case — MUX confirmed](../images/image49.png)
 
-The synthesis also confirms that there is MUX-like behaviour.
+The synthesis also confirms MUX-like behaviour.
 
 ---
 
@@ -177,21 +177,21 @@ module bad_case (
 endmodule
 ```
 
-From the code, we can infer that it is trying to be a MUX. However, due to the wildcard matching (`?`), the code loses its MUX-like behaviour as any value can come in place of the `?`. Thus, ambiguity, synthesis-simulation mismatches, and unintended latch behaviour may occur. Let us view the waveform:
+From the code, it can be inferred that it is trying to be a MUX. However, due to the wildcard matching (`?`), the code loses its MUX-like behaviour as any value can come in place of the `?`. Thus, ambiguity, synthesis-simulation mismatches, and unintended latch behaviour may occur. Viewing the waveform:
 
 ![Waveform of bad_case — latch behaviour when sel=11](../images/image50.png)
 
-Here, we can see that the output signal `y` latches onto its previous value and is constant when the `sel` signal is `11`. There is ambiguity about why such behaviour happens. Let us see what the synthesis tool infers:
+Here, it can be seen that the output signal `y` latches onto its previous value and is constant when the `sel` signal is `11`. There is ambiguity about why such behaviour happens. Viewing what the synthesis tool infers:
 
 ![Synthesis result of bad_case — mux inferred, mismatch with simulation](../images/image51.png)
 
-Here, we can see that the tool has inferred a MUX, but we detected latch-like behaviour in the simulation. Thus, there is also a synthesis-simulation mismatch, as we expected.
+Here, it can be seen that the tool has inferred a MUX, but latch-like behaviour was detected in the simulation. Thus, there is also a synthesis-simulation mismatch, as expected.
 
-If we perform GLS on this code, the error and latching will get fixed:
+Performing GLS on this code fixes the error and the latching:
 
 ![GLS waveform of bad_case — latch behaviour removed](../images/image52.png)
 
-We can see that now when the `sel` signal is `11`, the output is still being toggled with respect to `i3`. Thus, the latch-like behaviour has been removed, and the system does not get confused while selecting the value of `y`.
+It can be seen that now when the `sel` signal is `11`, the output is still being toggled with respect to `i3`. Thus, the latch-like behaviour has been removed, and the system does not get confused while selecting the value of `y`.
 
 ---
 
@@ -212,17 +212,17 @@ module incomp_case (
 endmodule
 ```
 
-From the code, we can infer that there will be latch inference for `sel = 10` or `11`, and thus `y` retains its previous value. Let us view the waveform now:
+From the code, it can be inferred that there will be latch inference for `sel = 10` or `11`, and thus `y` retains its previous value. Viewing the waveform:
 
 ![Waveform of incomp_case — latch behaviour for sel=10,11](../images/image53.png)
 
-In the encircled region, the value of `y` is constant, and is equal to the previous value of `y` (which was low). Thus, we can see the latch-like behaviour occurring here as well.
+In the encircled region, the value of `y` is constant, and is equal to the previous value of `y` (which was low). Thus, the latch-like behaviour can be observed here as well.
 
 ![Synthesis result of incomp_case — D-Latch inferred](../images/image54.png)
 
-Even the synthesis tool is showing us that the D-Latch is influencing the output of `y`, as we expected.
+Even the synthesis tool shows that the D-Latch is influencing the output of `y`, as expected.
 
-> **Golden Rule:** In combinational `always` blocks, always cover every possible input condition — either with a `default` in `case` statements or with a final `else` in `if` chains. If you don't need a particular output for certain inputs, assign `y = 0` or any defined value to keep things explicit.
+> **Golden Rule:** In combinational `always` blocks, every possible input condition must be covered — either with a `default` in `case` statements or with a final `else` in `if` chains. If a particular output is not needed for certain inputs, assigning `y = 0` or any defined value keeps things explicit.
 
 ---
 
@@ -250,11 +250,11 @@ module mux_generate (
 endmodule
 ```
 
-This code implements a 4-input and 1-output (4:1) multiplexer using a `for` loop, where `sel` selects one of the four inputs (`i0`–`i3`) and assigns it to `y`. Let us view the waveform:
+This code implements a 4-input and 1-output (4:1) multiplexer using a `for` loop, where `sel` selects one of the four inputs (`i0`–`i3`) and assigns it to `y`. Viewing the waveform:
 
 ![Waveform of mux_generate — correct MUX behaviour](../images/image55.png)
 
-We can see that the `sel` signal selects different values for `y` one by one, just as we expected.
+It can be seen that the `sel` signal selects different values for `y` one by one, just as expected.
 
 ---
 
@@ -285,13 +285,13 @@ module demux_case (
 endmodule
 ```
 
-This is an example of a 1:8 demultiplexer where the input `i` is routed to one output (`o0`–`o7`) based on the value of `sel`. Let us view the waveform now:
+This is an example of a 1:8 demultiplexer where the input `i` is routed to one output (`o0`–`o7`) based on the value of `sel`. Viewing the waveform:
 
 ![Waveform of demux_case — demux behaviour confirmed](../images/image56.png)
 
 From the waveform, it is evident that as `sel` changes, although the input is constant, the output keeps switching from `o0` to `o7`. Thus, the presence of a demux is confirmed.
 
-However, this way of coding is inefficient if there are more outputs to be toggled to, such as a 1:32 demux or a 1:256 demux. Instead of using case statements, we can use a `for` loop. We will see that in the next lab.
+However, this way of coding is inefficient if there are more outputs to be toggled to, such as a 1:32 demux or a 1:256 demux. Instead of using case statements, a `for` loop can be used, as shown in the next lab.
 
 ---
 
@@ -317,7 +317,7 @@ module demux_generate (
 endmodule
 ```
 
-This code also has the same functionality as the previous code — implementing a 1:8 demultiplexer. Let us view its waveform:
+This code also has the same functionality as the previous code — implementing a 1:8 demultiplexer. Viewing its waveform:
 
 ![Waveform of demux_generate — same output as demux_case](../images/image57.png)
 
@@ -373,7 +373,7 @@ gtkwave tb_rca.vcd
 
 ![Waveform of rca — num1 + num2 = sum verified](../images/image58.png)
 
-Clearly, we can see that `num1 + num2 = sum`, as it is in the code. For example: `num1 = 244`, `num2 = 15`, `sum = num1 + num2 = 259`. This is true at any other point in the waveform as well — exactly as we expected from the code.
+Clearly, it can be seen that `num1 + num2 = sum`, as it is in the code. For example: `num1 = 244`, `num2 = 15`, `sum = num1 + num2 = 259`. This is true at any other point in the waveform as well — exactly as expected from the code.
 
 ---
 
@@ -386,4 +386,3 @@ Clearly, we can see that `num1 + num2 = sum`, as it is in the code. For example:
 - `generate` blocks instantiate multiple hardware modules — useful for arrays of components like adder chains
 
 ---
-
