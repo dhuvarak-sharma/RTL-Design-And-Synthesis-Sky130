@@ -101,7 +101,6 @@ Synchronous resets help reduce timing-related issues in digital systems.
 
 Day 2 went deeper into understanding the Sky130 library file, the difference between hierarchical and flat synthesis, and how different types of flip-flops are coded, simulated, and synthesized.
 
----
 
 ### 1. Viewing the Sky130 Liberty (.lib) File
 
