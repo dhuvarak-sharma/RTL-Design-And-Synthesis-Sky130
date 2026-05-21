@@ -1,4 +1,47 @@
 # Day 2 — Liberty Files, Hierarchical/Flat Synthesis, and Flip-Flops
+## Theory Topics Covered
+
+### Timing Libraries
+
+Timing libraries, commonly stored as `.lib` files, contain timing and electrical information about standard cells used during synthesis. These libraries define:
+
+- Propagation delays
+- Power consumption
+- Pin characteristics
+- Timing constraints
+- Operating voltage and temperature conditions
+
+Synthesis tools use these libraries to map RTL logic into real hardware.
+
+---
+
+### SKY130 PDK Overview
+
+The SKY130 PDK (Process Design Kit) is an open-source 130nm semiconductor technology kit developed through the Google-SkyWater collaboration.
+
+It provides:
+
+- Standard cell libraries
+- Device models
+- Timing information
+- Physical design data
+- SPICE models
+
+The SKY130 ecosystem enables open-source VLSI design and fabrication workflows.
+
+---
+
+### Hierarchical Synthesis
+
+Hierarchical synthesis preserves the structure and modular organization of a design during synthesis. Each module is synthesized independently while maintaining module boundaries.
+
+Advantages include:
+
+- Easier debugging
+- Better module reuse
+- Faster synthesis for large designs
+
+---
 
 ### Flat Synthesis
 
