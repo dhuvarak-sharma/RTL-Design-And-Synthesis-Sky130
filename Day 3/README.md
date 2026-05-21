@@ -53,7 +53,7 @@ Synthesis tools automatically simplify logic using Boolean algebra and optimizat
 
 ## Labs
 
-On Day 3, we learned how Yosys can automatically simplify (optimize) logic designs to use fewer gates than a naive implementation would require. We explored both **combinational** and **sequential** optimization through seven example codes.
+On Day 3, the focus was on how Yosys can automatically simplify (optimize) logic designs to use fewer gates than a naive implementation would require. Both **combinational** and **sequential** optimization were explored through seven example codes.
 
 The key Yosys command used throughout this day is:
 
@@ -92,7 +92,7 @@ show
 
 ![opt_check synthesis result — AND gate](../images/image28.png)
 
-We expected an AND gate, and we got an AND gate after optimization. Thus, optimization was successful.
+An AND gate was expected, and an AND gate was obtained after optimization. Thus, optimization was successful.
 
 ---
 
@@ -119,7 +119,7 @@ show
 
 ![opt_check2 synthesis result — OR gate](../images/image29.png)
 
-We got an OR gate as expected, thus optimization was successful.
+An OR gate was obtained as expected, thus optimization was successful.
 
 ---
 
@@ -151,7 +151,7 @@ show
 
 ![opt_check3 synthesis result — 3-input AND gate](../images/image30.png)
 
-We got a 3-input AND gate as we expected, thus optimization was successful.
+A 3-input AND gate was obtained as expected, thus optimization was successful.
 
 ---
 
@@ -226,7 +226,7 @@ show
 
 ![multiple_module_opt synthesis result — AND and OR gate](../images/image32.png)
 
-We can see that the final optimization shows an AND gate and an OR gate, as we expected.
+The final optimization shows an AND gate and an OR gate, as expected.
 
 ---
 
@@ -298,7 +298,7 @@ show
 
 ![dff_const2 synthesis result — constant 1 output](../images/image34.png)
 
-We can see that the output is always `1` regardless of input. The flip-flop is completely removed.
+It can be seen that the output is always `1` regardless of input. The flip-flop is completely removed.
 
 ---
 
@@ -310,4 +310,3 @@ We can see that the output is always `1` regardless of input. The flip-flop is c
 - `flatten` is needed before optimizing multi-module designs
 
 ---
-
