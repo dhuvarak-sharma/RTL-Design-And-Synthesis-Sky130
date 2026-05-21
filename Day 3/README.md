@@ -48,8 +48,6 @@ Logic simplification reduces complex Boolean expressions into smaller and more e
 
 Synthesis tools automatically simplify logic using Boolean algebra and optimization algorithms.
 
----
----
 
 ## Labs
 
@@ -64,10 +62,8 @@ opt_clean -purge
 This command tells Yosys to sweep through the design and remove any redundant logic or unused signals before mapping to gates.
 
 ---
+### Combinational Logic Optimizations
 
-## Combinational Logic Optimizations
-
----
 
 ### Code 1 — AND Gate Optimization
 
@@ -229,10 +225,9 @@ show
 The final optimization shows an AND gate and an OR gate, as expected.
 
 ---
+### Sequential Logic Optimizations
 
-## Sequential Logic Optimizations
 
----
 
 ### Code 6 — D Flip-Flop with Asynchronous Reset (flop retained)
 
