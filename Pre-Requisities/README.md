@@ -1,5 +1,5 @@
 # Pre-Requisites
----
+
 
 Before beginning RTL design and synthesis, it is important to understand some basic digital design concepts.
 
@@ -15,6 +15,6 @@ Reliable hardware operation requires signals to satisfy timing constraints:
 
 Violating these constraints may cause unpredictable behavior.
 
-## Verilog Modeling Styles
+### Verilog Modeling Styles
 - **Structural Modeling**: Describes circuits using explicit gate-level connections.
 - **Behavioral Modeling**: Describes circuit functionality using high-level constructs such as if-else statements, allowing synthesis tools to generate the hardware implementation.
